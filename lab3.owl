@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/logistics-ontology#"
+     xml:base="http://www.semanticweb.org/logistics-ontology"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+     
+    <owl:Ontology rdf:about="http://www.semanticweb.org/logistics-ontology"/>
+
+    <!-- Классы -->
+    <owl:Class rdf:ID="Завод"/>
+    <owl:Class rdf:ID="Склад"/>
+    <owl:Class rdf:ID="Магазин"/>
+    <owl:Class rdf:ID="Товар"/>
+
+    <!-- Свойства -->
+    <owl:ObjectProperty rdf:ID="производит">
+        <rdfs:domain rdf:resource="#Завод"/>
+        <rdfs:range rdf:resource="#Товар"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:ID="отправляет">
+        <rdfs:domain rdf:resource="#Завод"/>
+        <rdfs:range rdf:resource="#Склад"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:ID="хранит">
+        <rdfs:domain rdf:resource="#Склад"/>
+        <rdfs:range rdf:resource="#Товар"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:ID="поставляет">
+        <rdfs:domain rdf:resource="#Склад"/>
+        <rdfs:range rdf:resource="#Магазин"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:ID="продает">
+        <rdfs:domain rdf:resource="#Магазин"/>
+        <rdfs:range rdf:resource="#Товар"/>
+    </owl:ObjectProperty>
+
+    <!-- Примеры -->
+    <Товар rdf:ID="Молоко"/>
+    
+    <Завод rdf:ID="МолочныйЗавод">
+        <производит rdf:resource="#Молоко"/>
+    </Завод>
+    
+    <Склад rdf:ID="Склад1">
+        <хранит rdf:resource="#Молоко"/>
+        <поставляет rdf:resource="#Магазин1"/>
+    </Склад>
+    
+    <Магазин rdf:ID="Магазин1">
+        <продает rdf:resource="#Молоко"/>
+    </Магазин>
+
+</rdf:RDF>
